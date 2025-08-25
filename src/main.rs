@@ -74,10 +74,15 @@ pub fn DLSCalculator() -> impl IntoView {
 
     view! {
         <div style="max-width: 400px; margin: 2rem auto; padding: 2rem; background: #f8f9fa; border-radius: 1rem; box-shadow: 0 2px 12px #0001;">
-            <h2 style="text-align: center; margin-bottom: 1.5rem; color: #2c3e50;">DLS Target Calculator</h2>
+            <h2 style="text-align: center; margin-bottom: 1.5rem; color: #2c3e50;">
+                DLS Target Calculator
+            </h2>
             <div style="display: flex; flex-direction: column; gap: 1.2rem;">
                 <div>
-                    <label for="t1" style="font-weight: 500;">Team 1 Score</label><br />
+                    <label for="t1" style="font-weight: 500;">
+                        Team 1 Score
+                    </label>
+                    <br />
                     <input
                         id="t1"
                         type="number"
@@ -89,7 +94,10 @@ pub fn DLSCalculator() -> impl IntoView {
                     />
                 </div>
                 <div>
-                    <label for="overs_played" style="font-weight: 500;">Overs Played (before interruption)</label><br />
+                    <label for="overs_played" style="font-weight: 500;">
+                        "Overs Played (before interruption)"
+                    </label>
+                    <br />
                     <input
                         id="overs_played"
                         type="number"
@@ -102,7 +110,10 @@ pub fn DLSCalculator() -> impl IntoView {
                     />
                 </div>
                 <div>
-                    <label for="wickets_lost" style="font-weight: 500;">Wickets Lost (at interruption)</label><br />
+                    <label for="wickets_lost" style="font-weight: 500;">
+                        "Wickets Lost (beore interruption)"
+                    </label>
+                    <br />
                     <input
                         id="wickets_lost"
                         type="number"
@@ -115,7 +126,10 @@ pub fn DLSCalculator() -> impl IntoView {
                     />
                 </div>
                 <div>
-                    <label for="new_total_overs" style="font-weight: 500;">New Total Overs (after interruption)</label><br />
+                    <label for="new_total_overs" style="font-weight: 500;">
+                        "New Total Overs (after interruption)"
+                    </label>
+                    <br />
                     <input
                         id="new_total_overs"
                         type="number"
@@ -131,21 +145,30 @@ pub fn DLSCalculator() -> impl IntoView {
             <div style="margin-top: 2rem;">
                 {move || {
                     match updated_target.get() {
-                        Ok(Ok(target)) => view! {
-                            <p style="color: #27ae60; background: #eafaf1; padding: 1rem; border-radius: 0.5rem; text-align: center; font-size: 1.2rem;">
-                                "Updated Target: "<strong>{target}</strong>
-                            </p>
-                        }.into_any(),
-                        Ok(Err(e)) => view! {
-                            <p style="color: #c0392b; background: #fff3f3; padding: 0.75rem; border-radius: 0.5rem; text-align: center;">
-                                {e}
-                            </p>
-                        }.into_any(),
-                        Err(e) if e != "Please fill in all fields" => view! {
-                            <p style="color: #c0392b; background: #fff3f3; padding: 0.75rem; border-radius: 0.5rem; text-align: center;">
-                                {e}
-                            </p>
-                        }.into_any(),
+                        Ok(Ok(target)) => {
+                            view! {
+                                <p style="color: #27ae60; background: #eafaf1; padding: 1rem; border-radius: 0.5rem; text-align: center; font-size: 1.2rem;">
+                                    "Updated Target: "<strong>{target}</strong>
+                                </p>
+                            }
+                                .into_any()
+                        }
+                        Ok(Err(e)) => {
+                            view! {
+                                <p style="color: #c0392b; background: #fff3f3; padding: 0.75rem; border-radius: 0.5rem; text-align: center;">
+                                    {e}
+                                </p>
+                            }
+                                .into_any()
+                        }
+                        Err(e) if e != "Please fill in all fields" => {
+                            view! {
+                                <p style="color: #c0392b; background: #fff3f3; padding: 0.75rem; border-radius: 0.5rem; text-align: center;">
+                                    {e}
+                                </p>
+                            }
+                                .into_any()
+                        }
                         _ => view! { <div></div> }.into_any(),
                     }
                 }}
