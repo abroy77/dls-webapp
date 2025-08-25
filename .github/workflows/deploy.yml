@@ -67,7 +67,7 @@ jobs:
       run: ./trunk build --release --public-url "/${GITHUB_REPOSITORY#*/}"
 
     - name: List Build Output
-    - run: ls -la ./dist  
+      run: ls -la ./dist  
 
     - name: Setup Pages
       uses: actions/configure-pages@v4
