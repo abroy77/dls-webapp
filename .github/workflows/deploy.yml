@@ -56,16 +56,11 @@ jobs:
       uses: dtolnay/rust-toolchain@stable
       with:
         targets: wasm32-unknown-unknown
-    - name: Install trunk
-      run: 
-        
-    - name: Install wasm-pack
-      run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
     - name: Cache Rust dependencies
       uses: Swatinem/rust-cache@v2
       
-    - name: Build WASM package
+    - name: Install Trunk
       run: wget -qO- https://github.com/trunk-rs/trunk/releases/download/v0.21.14/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
 
     - name: Build with trunk
