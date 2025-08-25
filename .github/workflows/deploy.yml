@@ -65,8 +65,6 @@ jobs:
 
     - name: Build with trunk
       run: ./trunk build --release --public-url "/${GITHUB_REPOSITORY#*/}"
-      # run: ./trunk build --release
-
 
     - name: List Build Output
     - run: ls -la ./dist  
